@@ -5,7 +5,7 @@ from selenium import webdriver
 from selenium.common.exceptions import WebDriverException
 from selenium.webdriver.common.keys import Keys
 
-MAX_WAIT = 3
+MAX_WAIT = 1
 
 
 class NewVisitorTest(LiveServerTestCase):
@@ -72,7 +72,7 @@ class NewVisitorTest(LiveServerTestCase):
         self.browser.get(self.live_server_url)
         page_text = self.browser.find_element_by_tag_name('body').text
         self.assertNotIn('Buy peacock feathers', page_text)
-        self.assertIn('make a fly', page_text)
+        self.assertNotIn('make a fly', page_text)
 
         # Francis starts a new to-do list
         self.add_item_to_list('Buy milk')
@@ -84,4 +84,4 @@ class NewVisitorTest(LiveServerTestCase):
 
         page_text = self.browser.find_element_by_tag_name('body').text
         self.assertNotIn('Buy peacock feathers', page_text)
-        self.assertIn('make a fly', page_text)
+        self.assertNotIn('make a fly', page_text)
